@@ -32,6 +32,7 @@ def generate_notification(component: str, temperature: float, timeout: int = 0) 
     """
     NOTIFICATION_TEMPLATE = "{component} is overheating at {temperature}C"
     notification_body = NOTIFICATION_TEMPLATE.format(component=component, temperature=temperature)
+    timeout = timeout * 1000 # Convert to miliseconds
 
     subprocess.check_output(['notify-send', 'CPU Overheating', notification_body, '-t', str(timeout)])
 
